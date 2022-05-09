@@ -1,6 +1,5 @@
 ﻿using ArenaGenerator.Arenas;
 using ArenaGenerator.GameParams;
-using System;
 using System.Linq;
 
 namespace ArenaGenerator
@@ -15,13 +14,13 @@ namespace ArenaGenerator
             arena.Parties[0] = new ArenaParty
             {
                Player = 0,
-               Units = Enumerable.Range(0, 100).Select(_ => UnitTemplates.CraterM3(PowerShieldType.Big, WeaponConsts.LC.UpgHeavyElectroCannon)).ToList()
+               Units = Enumerable.Range(0, 100).Select(_ => UnitTemplates.CraterM3_hE).ToList()
             };
 
             arena.Parties[1] = new ArenaParty
             {
                Player = 1,
-               Units = Enumerable.Range(0, 100).Select(_ => UnitTemplates.CraterM3(PowerShieldType.Big, WeaponConsts.LC.UpgHeavyElectroCannon)).ToList()
+               Units = Enumerable.Range(0, 100).Select(_ => UnitTemplates.CraterM3_hE).ToList()
             };
 
             arena.Orientation = i < 6 ? ArenaOrientation.N_S
