@@ -1,5 +1,7 @@
 ﻿using ArenaGenerator.Arenas;
 using ArenaGenerator.GameParams;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ArenaGenerator
@@ -8,29 +10,98 @@ namespace ArenaGenerator
    {
       static void Main(string[] args)
       {
-         var arenas = Enumerable.Range(0, 24).Select(i =>
-         {
-            var arena = BattleArena.CreateStandard();
-            arena.Parties[0] = new ArenaParty
-            {
-               Player = 0,
-               Units = Enumerable.Range(0, 100).Select(_ => UnitTemplates.CraterM3_hE).ToList()
-            };
-
-            arena.Parties[1] = new ArenaParty
-            {
-               Player = 1,
-               Units = Enumerable.Range(0, 100).Select(_ => UnitTemplates.CraterM3_hE).ToList()
-            };
-
-            arena.Orientation = i < 6 ? ArenaOrientation.N_S
-               : i < 12 ? ArenaOrientation.S_N
-               : i < 18 ? ArenaOrientation.W_E
-               : ArenaOrientation.E_W;
-            return arena;
-         }).ToArray();
-
-         new LevelGenerator().GenerateLevel(arenas);
+         new LevelGenerator().GenerateLevel(
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.CraterM3_hE, 100), new ArmyInput(() => UnitTemplates.CraterM3_hE, 100), ArenaOrientation.N_S),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.CraterM3_hS, 100), new ArmyInput(() => UnitTemplates.CraterM3_hS, 100), ArenaOrientation.N_S),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.MoonM3_E, 100), new ArmyInput(() => UnitTemplates.MoonM3_E, 100), ArenaOrientation.N_S),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.MoonM3_S, 100), new ArmyInput(() => UnitTemplates.MoonM3_S, 100), ArenaOrientation.N_S),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.MoonM3_P, 100), new ArmyInput(() => UnitTemplates.MoonM3_P, 100), ArenaOrientation.N_S),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.CraterM3_hE, 30, () => UnitTemplates.MoonM3_E, 70), new ArmyInput(() => UnitTemplates.CraterM3_hE, 30, () => UnitTemplates.MoonM3_E, 70), ArenaOrientation.N_S),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.CraterM3_hE, 100), new ArmyInput(() => UnitTemplates.CraterM3_hE, 100), ArenaOrientation.S_N),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.CraterM3_hS, 100), new ArmyInput(() => UnitTemplates.CraterM3_hS, 100), ArenaOrientation.S_N),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.MoonM3_E, 100), new ArmyInput(() => UnitTemplates.MoonM3_E, 100), ArenaOrientation.S_N),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.MoonM3_S, 100), new ArmyInput(() => UnitTemplates.MoonM3_S, 100), ArenaOrientation.S_N),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.MoonM3_P, 100), new ArmyInput(() => UnitTemplates.MoonM3_P, 100), ArenaOrientation.S_N),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.CraterM3_hE, 30, () => UnitTemplates.MoonM3_E, 70), new ArmyInput(() => UnitTemplates.CraterM3_hE, 30, () => UnitTemplates.MoonM3_E, 70), ArenaOrientation.S_N),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.CraterM3_hE, 100), new ArmyInput(() => UnitTemplates.CraterM3_hE, 100), ArenaOrientation.W_E),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.CraterM3_hS, 100), new ArmyInput(() => UnitTemplates.CraterM3_hS, 100), ArenaOrientation.W_E),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.MoonM3_E, 100), new ArmyInput(() => UnitTemplates.MoonM3_E, 100), ArenaOrientation.W_E),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.MoonM3_S, 100), new ArmyInput(() => UnitTemplates.MoonM3_S, 100), ArenaOrientation.W_E),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.MoonM3_P, 100), new ArmyInput(() => UnitTemplates.MoonM3_P, 100), ArenaOrientation.W_E),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.CraterM3_hE, 30, () => UnitTemplates.MoonM3_E, 70), new ArmyInput(() => UnitTemplates.CraterM3_hE, 30, () => UnitTemplates.MoonM3_E, 70), ArenaOrientation.W_E),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.CraterM3_hE, 100), new ArmyInput(() => UnitTemplates.CraterM3_hE, 100), ArenaOrientation.E_W),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.CraterM3_hS, 100), new ArmyInput(() => UnitTemplates.CraterM3_hS, 100), ArenaOrientation.E_W),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.MoonM3_E, 100), new ArmyInput(() => UnitTemplates.MoonM3_E, 100), ArenaOrientation.E_W),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.MoonM3_S, 100), new ArmyInput(() => UnitTemplates.MoonM3_S, 100), ArenaOrientation.E_W),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.MoonM3_P, 100), new ArmyInput(() => UnitTemplates.MoonM3_P, 100), ArenaOrientation.E_W),
+            ArenaFactory.Create(new ArmyInput(() => UnitTemplates.CraterM3_hE, 30, () => UnitTemplates.MoonM3_E, 70), new ArmyInput(() => UnitTemplates.CraterM3_hE, 30, () => UnitTemplates.MoonM3_E, 70), ArenaOrientation.E_W)
+            );
       }
+   }
+
+   public static class ArenaFactory
+   {
+      public static BattleArena Create(ArmyInput army1, ArmyInput army2, ArenaOrientation orientation = ArenaOrientation.N_S)
+      {
+         var arena = BattleArena.CreateStandard();
+         arena.Parties[0] = new ArenaParty
+         {
+            Player = 0,
+            Units = CreateUnits(army1)
+         };
+
+         arena.Parties[1] = new ArenaParty
+         {
+            Player = 1,
+            Units = CreateUnits(army2)
+         };
+
+         arena.Orientation = orientation;
+         return arena;
+      }
+
+      private static IList<Unit> CreateUnits(ArmyInput input)
+      {
+         var random = new Random();
+         return input.Groups.SelectMany(g => Enumerable.Range(0, g.Count).Select(_ => g.Unit())).OrderBy(_ => random.Next()).ToList();
+      }
+   }
+
+   public class ArmyInput
+   {
+      public IList<ArmyGroupInfo> Groups { get; init; }
+      public ArmyInput(Func<Unit> unit, int count)
+      {
+         Groups = new List<ArmyGroupInfo>
+         {
+            new ArmyGroupInfo
+            {
+               Unit = unit,
+               Count = count
+            }
+         };
+      }
+      public ArmyInput(Func<Unit> unit, int count, Func<Unit> unit2, int count2)
+      {
+         Groups = new List<ArmyGroupInfo>
+         {
+            new ArmyGroupInfo
+            {
+               Unit = unit,
+               Count = count
+            },
+            new ArmyGroupInfo
+            {
+               Unit = unit2,
+               Count = count2
+            }
+         };
+      }
+   }
+
+   public class ArmyGroupInfo
+   {
+      public Func<Unit> Unit { get; set; }
+      public int Count { get; set; }
    }
 }
