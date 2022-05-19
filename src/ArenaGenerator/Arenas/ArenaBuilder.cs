@@ -1,4 +1,5 @@
-﻿using Ieo.EarthFileApi.Files;
+﻿using ArenaGenerator.GameParams;
+using Ieo.EarthFileApi.Files;
 using System;
 
 namespace ArenaGenerator.Arenas
@@ -30,9 +31,13 @@ namespace ArenaGenerator.Arenas
       {
          foreach (var party in _arena.Parties)
          {
-            misFile.Data.Players[party.Player].StartPositionX = (byte)(0x20 + party.Player);
-            misFile.Data.Players[party.Player].StartPositionY = (byte)(0x20 + party.Player);
+            //hack: make player starts on oposite sides of the map to prevent IEO gamemode auto-ally
+            misFile.Data.Players[party.Player].StartPositionX = (byte)(0x12 + party.Player + (party.Player % 2 == 0 ? 200 : 0));
+            misFile.Data.Players[party.Player].StartPositionY = (byte)(0x12 + party.Player + (party.Player % 2 == 0 ? 200 : 0));
             misFile.Data.Players[party.Player].UnknownField = 0x5;
+            //hack: spawn builder and a building underground to prevent becoming a sepctator in IEO gamemode
+            misFile.Data.Objects.Add($"{0x20 + party.Player}, {0x20}, 1, 0, {party.Player}, 100, 0, 0, -1 {ChassisConsts.UCS.Mammoth}");
+            misFile.Data.Objects.Add($"{0x20 + party.Player}, {0x21}, 1, 0, {party.Player}, 100, 0, 0, -1 UCSBET");
          }
       }
 
