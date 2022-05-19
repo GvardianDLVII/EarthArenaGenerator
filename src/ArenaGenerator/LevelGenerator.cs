@@ -23,7 +23,7 @@ namespace ArenaGenerator
 
       public void GenerateLevel(params BattleArena[] arenas)
       {
-         var lndFile = CreateEmptyLndTemplate("GenArena2");
+         var lndFile = CreateEmptyLndTemplate($"Arena_{DateTime.UtcNow:yyyyMMddHHmmss}");
          var misFile = CreateEmptyMisTemplate(lndFile);
 
          foreach(var arena in arenas)
