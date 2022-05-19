@@ -1,4 +1,5 @@
 ﻿using Ieo.EarthFileApi.Files;
+using System;
 
 namespace ArenaGenerator.Arenas
 {
@@ -46,6 +47,121 @@ namespace ArenaGenerator.Arenas
                   misFile.Data.Objects.Add($"{i}, {j}, 0, 0, 0, 100, 0, 0, -1 NEBWALL0");
                }
             }
+         }
+         ApplyPattern(misFile);
+      }
+
+      private void ApplyPattern(EarthFile<EarthMisData> misFile)
+      {
+         var midH = _arena.Width / 2;
+         var midV = _arena.Height / 2;
+         var arenaMidH = _arenaStartX + midH - 1;
+         var arenaMidV = _arenaStartY + midV - 1;
+         switch (_arena.Type)
+         {
+            case ArenaType.Open: return;
+            case ArenaType.Closed:
+               switch(_arena.Orientation)
+               {
+                  case ArenaOrientation.N_S:
+                  case ArenaOrientation.S_N:
+                     for (int i = _arenaStartX; i<= _arenaEndX; i++)
+                     {
+                        if (i >= arenaMidH - 1 && i <= arenaMidH + 1)
+                           continue;
+                        misFile.Data.Objects.Add($"{i}, {arenaMidV}, 0, 0, 0, 100, 0, 0, -1 NEBWALL0");
+                        misFile.Data.Objects.Add($"{i}, {arenaMidV + 1}, 0, 0, 0, 100, 0, 0, -1 NEBWALL0");
+                     }
+                     return;
+                  case ArenaOrientation.W_E:
+                  case ArenaOrientation.E_W:
+                     for (int j = _arenaStartY; j <= _arenaEndY; j++)
+                     {
+                        if (j >= arenaMidV - 1 && j <= arenaMidV + 2)
+                           continue;
+                        misFile.Data.Objects.Add($"{arenaMidH}, {j}, 0, 0, 0, 100, 0, 0, -1 NEBWALL0");
+                        misFile.Data.Objects.Add($"{arenaMidH + 1}, {j}, 0, 0, 0, 100, 0, 0, -1 NEBWALL0");
+                     }
+                     return;
+                  default: throw new NotImplementedException();
+               }
+            case ArenaType.SemiOpen:
+               switch (_arena.Orientation)
+               {
+                  case ArenaOrientation.N_S:
+                  case ArenaOrientation.S_N:
+                     for (int i = _arenaStartX; i <= _arenaEndX; i++)
+                     {
+                        if (i >= arenaMidH - 3 && i <= arenaMidH + 4)
+                           continue;
+                        misFile.Data.Objects.Add($"{i}, {arenaMidV}, 0, 0, 0, 100, 0, 0, -1 NEBWALL0");
+                        misFile.Data.Objects.Add($"{i}, {arenaMidV + 1}, 0, 0, 0, 100, 0, 0, -1 NEBWALL0");
+                     }
+                     return;
+                  case ArenaOrientation.W_E:
+                  case ArenaOrientation.E_W:
+                     for (int j = _arenaStartY; j <= _arenaEndY; j++)
+                     {
+                        if (j >= arenaMidV - 3 && j <= arenaMidV + 4)
+                           continue;
+                        misFile.Data.Objects.Add($"{arenaMidH}, {j}, 0, 0, 0, 100, 0, 0, -1 NEBWALL0");
+                        misFile.Data.Objects.Add($"{arenaMidH + 1}, {j}, 0, 0, 0, 100, 0, 0, -1 NEBWALL0");
+                     }
+                     return;
+                  default: throw new NotImplementedException();
+               }
+            case ArenaType.Dotted:
+               switch (_arena.Orientation)
+               {
+                  case ArenaOrientation.N_S:
+                  case ArenaOrientation.S_N:
+                     for (int i = _arenaStartX; i <= _arenaEndX; i++)
+                     {
+                        if(i % 2 == 0)
+                           misFile.Data.Objects.Add($"{i}, {arenaMidV - 1}, 0, 0, 0, 100, 0, 0, -1 NEBWALL0");
+                        else
+                           misFile.Data.Objects.Add($"{i}, {arenaMidV + 2}, 0, 0, 0, 100, 0, 0, -1 NEBWALL0");
+                     }
+                     return;
+                  case ArenaOrientation.W_E:
+                  case ArenaOrientation.E_W:
+                     for (int j = _arenaStartY; j <= _arenaEndY; j++)
+                     {
+                        if (j % 2 == 0)
+                           misFile.Data.Objects.Add($"{arenaMidH - 1}, {j}, 0, 0, 0, 100, 0, 0, -1 NEBWALL0");
+                        else
+                           misFile.Data.Objects.Add($"{arenaMidH + 2}, {j}, 0, 0, 0, 100, 0, 0, -1 NEBWALL0");
+                     }
+                     return;
+                  default: throw new NotImplementedException();
+               }
+            case ArenaType.Passages:
+               switch (_arena.Orientation)
+               {
+                  case ArenaOrientation.N_S:
+                  case ArenaOrientation.S_N:
+                     for (int i = _arenaStartX; i <= _arenaEndX; i++)
+                     {
+                        if (i % 2 == 0)
+                        {
+                           misFile.Data.Objects.Add($"{i}, {arenaMidV}, 0, 0, 0, 100, 0, 0, -1 NEBWALL0");
+                           misFile.Data.Objects.Add($"{i}, {arenaMidV + 1}, 0, 0, 0, 100, 0, 0, -1 NEBWALL0");
+                        }
+                     }
+                     return;
+                  case ArenaOrientation.W_E:
+                  case ArenaOrientation.E_W:
+                     for (int j = _arenaStartY; j <= _arenaEndY; j++)
+                     {
+                        if (j % 2 == 0)
+                        {
+                           misFile.Data.Objects.Add($"{arenaMidH}, {j}, 0, 0, 0, 100, 0, 0, -1 NEBWALL0");
+                           misFile.Data.Objects.Add($"{arenaMidH + 1}, {j}, 0, 0, 0, 100, 0, 0, -1 NEBWALL0");
+                        }
+                     }
+                     return;
+                  default: throw new NotImplementedException();
+               }
          }
       }
 

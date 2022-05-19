@@ -11,8 +11,39 @@ namespace ArenaGenerator
       static void Main(string[] args)
       {
          new LevelGenerator().GenerateLevel(
-            ArenaFactory.Create(new ArmyInput(UnitTemplates.CraterM3_hE, 100), new ArmyInput(UnitTemplates.CraterM3_hE, 100), ArenaOrientation.N_S),
-            ArenaFactory.Create(new ArmyInput(UnitTemplates.CraterM3_hS, 100), new ArmyInput(UnitTemplates.CraterM3_hS, 100), ArenaOrientation.N_S),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.CraterM3_hE, 100), new ArmyInput(UnitTemplates.CraterM3_hE, 100), ArenaType.Open),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.CraterM3_hE, 100), new ArmyInput(UnitTemplates.CraterM3_hE, 100), ArenaType.Closed),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.CraterM3_hE, 100), new ArmyInput(UnitTemplates.CraterM3_hE, 100), ArenaType.SemiOpen),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.CraterM3_hE, 100), new ArmyInput(UnitTemplates.CraterM3_hE, 100), ArenaType.Dotted),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.CraterM3_hE, 100), new ArmyInput(UnitTemplates.CraterM3_hE, 100), ArenaType.Passages),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.CraterM3_hE_P, 100), new ArmyInput(UnitTemplates.CraterM3_hE_P, 100), ArenaType.Open),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.CraterM3_hE_P, 100), new ArmyInput(UnitTemplates.CraterM3_hE_P, 100), ArenaType.Closed),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.CraterM3_hE_P, 100), new ArmyInput(UnitTemplates.CraterM3_hE_P, 100), ArenaType.SemiOpen),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.CraterM3_hE_P, 100), new ArmyInput(UnitTemplates.CraterM3_hE_P, 100), ArenaType.Dotted),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.CraterM3_hE_P, 100), new ArmyInput(UnitTemplates.CraterM3_hE_P, 100), ArenaType.Passages),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.Panther3_hP, 100), new ArmyInput(UnitTemplates.Panther3_hP, 100), ArenaType.Open),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.Panther3_hP, 100), new ArmyInput(UnitTemplates.Panther3_hP, 100), ArenaType.Closed),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.Panther3_hP, 100), new ArmyInput(UnitTemplates.Panther3_hP, 100), ArenaType.SemiOpen),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.Panther3_hP, 100), new ArmyInput(UnitTemplates.Panther3_hP, 100), ArenaType.Dotted),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.Panther3_hP, 100), new ArmyInput(UnitTemplates.Panther3_hP, 100), ArenaType.Passages),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.Kauki_hL, 100), new ArmyInput(UnitTemplates.Kauki_hL, 100), ArenaType.Open),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.Kauki_hL, 100), new ArmyInput(UnitTemplates.Kauki_hL, 100), ArenaType.Closed),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.Kauki_hL, 100), new ArmyInput(UnitTemplates.Kauki_hL, 100), ArenaType.SemiOpen),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.Kauki_hL, 100), new ArmyInput(UnitTemplates.Kauki_hL, 100), ArenaType.Dotted),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.Kauki_hL, 100), new ArmyInput(UnitTemplates.Kauki_hL, 100), ArenaType.Passages),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.Jaguar2_hP_P, 30, UnitTemplates.Spider3_P, 70), new ArmyInput(UnitTemplates.Jaguar2_hP_P, 30, UnitTemplates.Spider3_P, 70), ArenaType.Open),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.Jaguar2_hP_P, 30, UnitTemplates.Spider3_P, 70), new ArmyInput(UnitTemplates.Jaguar2_hP_P, 30, UnitTemplates.Spider3_P, 70), ArenaType.Closed),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.Jaguar2_hP_P, 30, UnitTemplates.Spider3_P, 70), new ArmyInput(UnitTemplates.Jaguar2_hP_P, 30, UnitTemplates.Spider3_P, 70), ArenaType.SemiOpen),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.Jaguar2_hP_P, 30, UnitTemplates.Spider3_P, 70), new ArmyInput(UnitTemplates.Jaguar2_hP_P, 30, UnitTemplates.Spider3_P, 70), ArenaType.Dotted),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.Jaguar2_hP_P, 30, UnitTemplates.Spider3_P, 70), new ArmyInput(UnitTemplates.Jaguar2_hP_P, 30, UnitTemplates.Spider3_P, 70), ArenaType.Passages),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.CraterM3_hS, 100), new ArmyInput(UnitTemplates.CraterM3_hS, 100), ArenaType.Open),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.CraterM3_hS, 100), new ArmyInput(UnitTemplates.CraterM3_hS, 100), ArenaType.Closed),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.CraterM3_hS, 100), new ArmyInput(UnitTemplates.CraterM3_hS, 100), ArenaType.SemiOpen),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.CraterM3_hS, 100), new ArmyInput(UnitTemplates.CraterM3_hS, 100), ArenaType.Dotted),
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.CraterM3_hS, 100), new ArmyInput(UnitTemplates.CraterM3_hS, 100), ArenaType.Passages)
+
+
+            /*ArenaFactory.Create(new ArmyInput(UnitTemplates.CraterM3_hS, 100), new ArmyInput(UnitTemplates.CraterM3_hS, 100), ArenaType.Open),
             ArenaFactory.Create(new ArmyInput(UnitTemplates.MoonM3_E, 100), new ArmyInput(UnitTemplates.MoonM3_E, 100), ArenaOrientation.N_S),
             ArenaFactory.Create(new ArmyInput(UnitTemplates.MoonM3_S, 100), new ArmyInput(UnitTemplates.MoonM3_S, 100), ArenaOrientation.N_S),
             ArenaFactory.Create(new ArmyInput(UnitTemplates.MoonM3_P, 100), new ArmyInput(UnitTemplates.MoonM3_P, 100), ArenaOrientation.N_S),
@@ -42,16 +73,16 @@ namespace ArenaGenerator
             ArenaFactory.Create(new ArmyInput(UnitTemplates.Siberia_L, 150), new ArmyInput(UnitTemplates.Siberia_L, 150), ArenaOrientation.S_N),
             ArenaFactory.Create(new ArmyInput(UnitTemplates.Kauki_hL, 100), new ArmyInput(UnitTemplates.Kauki_hL, 100), ArenaOrientation.S_N),
             ArenaFactory.Create(new ArmyInput(UnitTemplates.Ural_hL, 100), new ArmyInput(UnitTemplates.Ural_hL, 100), ArenaOrientation.S_N),
-            ArenaFactory.Create(new ArmyInput(UnitTemplates.Kauki_hL, 30, UnitTemplates.Siberia_L, 70), new ArmyInput(UnitTemplates.Kauki_hL, 30, UnitTemplates.Siberia_L, 70), ArenaOrientation.S_N)
+            ArenaFactory.Create(new ArmyInput(UnitTemplates.Kauki_hL, 30, UnitTemplates.Siberia_L, 70), new ArmyInput(UnitTemplates.Kauki_hL, 30, UnitTemplates.Siberia_L, 70), ArenaOrientation.S_N)*/
             );
       }
    }
 
    public static class ArenaFactory
    {
-      public static BattleArena Create(ArmyInput army1, ArmyInput army2, ArenaOrientation orientation = ArenaOrientation.N_S)
+      public static BattleArena Create(ArmyInput army1, ArmyInput army2, ArenaType type = ArenaType.Open, ArenaOrientation orientation = ArenaOrientation.N_S)
       {
-         var arena = BattleArena.CreateStandard();
+         var arena = new BattleArena(type: type, orientation: orientation);
          arena.Parties[0] = new ArenaParty
          {
             Player = 0,
@@ -64,7 +95,6 @@ namespace ArenaGenerator
             Units = CreateUnits(army2)
          };
 
-         arena.Orientation = orientation;
          return arena;
       }
 

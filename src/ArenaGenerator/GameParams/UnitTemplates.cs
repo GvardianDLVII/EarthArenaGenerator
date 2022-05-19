@@ -12,6 +12,7 @@ namespace ArenaGenerator.GameParams
       public static Unit Spider3_P() => Create(ChassisConsts.UCS.Spider3, PowerShieldType.Big, Weapons.UCS.SpiderJaguarPlasmaUpg1);
       public static Unit Panther3_hP() => Create(ChassisConsts.UCS.Panther3, PowerShieldType.Big, Weapons.UCS.PantherJaguarHeavyPlasmaUpg2);
       public static Unit Jaguar2_hP() => Create(ChassisConsts.UCS.Jaguar2, PowerShieldType.Big, Weapons.UCS.PantherJaguarHeavyPlasmaUpg2, Weapons.UCS.SpiderJaguarPlasmaUpg1);
+      public static Unit Jaguar2_hP_P() => Create(ChassisConsts.UCS.Jaguar2, PowerShieldType.Big, Weapons.UCS.PantherJaguarHeavyPlasmaUpg2, Weapons.UCS.SpiderJaguarPlasmaUpg1, subweapon1: Weapons.UCS.SpiderJaguarPlasmaUpg1);
       public static Unit Grizzly3_hP() => Create(ChassisConsts.UCS.Grizzly3, PowerShieldType.Big, Weapons.UCS.GrizzlyHydraHeavyPlasmaUpg1, Weapons.UCS.SpiderJaguarPlasmaUpg1);
 
       public static Unit MoonM3_E() => Create(ChassisConsts.LC.MoonM3, PowerShieldType.Big, Weapons.LC.ElectroCannonUpg1);
@@ -19,6 +20,7 @@ namespace ArenaGenerator.GameParams
       public static Unit MoonM3_P() => Create(ChassisConsts.LC.MoonM3, PowerShieldType.Big, Weapons.LC.PlasmaProjector);
       public static Unit CraterM3_hE() => Create(ChassisConsts.LC.CraterM3, PowerShieldType.Big, Weapons.LC.HeavyElectroCannonUpg1);
       public static Unit CraterM3_hS() => Create(ChassisConsts.LC.CraterM3, PowerShieldType.Big, Weapons.LC.HeavySonicCannonUpg1);
+      public static Unit CraterM3_hE_P() => Create(ChassisConsts.LC.CraterM3, PowerShieldType.Big, Weapons.LC.HeavyElectroCannonUpg1, subweapon1: Weapons.LC.PlasmaProjector);
 
       public static Unit Create(string chassis, PowerShieldType shield, string weapon1 = null, string weapon2 = null, string weapon3 = null, string weapon4 = null, string subweapon1 = null, string subweapon2 = null, string subweapon3 = null, string subweapon4 = null)
       {

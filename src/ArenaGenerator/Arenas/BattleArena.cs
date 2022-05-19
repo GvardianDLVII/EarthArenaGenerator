@@ -6,18 +6,15 @@
       public int Height { get; init; }
       public readonly ArenaParty[] Parties = new ArenaParty[2];
       public ArenaType Type { get; init; }
-      public ArenaOrientation Orientation { get; set; } = ArenaOrientation.N_S;
+      public ArenaOrientation Orientation { get; init; }
 
-      protected BattleArena() { }
 
-      public static BattleArena CreateStandard()
+      public BattleArena(int width = 20, int height = 20, ArenaType type = ArenaType.Open, ArenaOrientation orientation = ArenaOrientation.N_S)
       {
-         return new BattleArena
-         {
-            Width = 20,
-            Height = 20,
-            Type = ArenaType.StandardSquare
-         };
+         Width = width;
+         Height = height;
+         Type = type;
+         Orientation = orientation;
       }
    }
 }

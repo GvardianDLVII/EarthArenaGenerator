@@ -23,7 +23,7 @@ namespace ArenaGenerator
 
       public void GenerateLevel(params BattleArena[] arenas)
       {
-         var lndFile = CreateEmptyLndTemplate();
+         var lndFile = CreateEmptyLndTemplate("GenArena2");
          var misFile = CreateEmptyMisTemplate(lndFile);
 
          foreach(var arena in arenas)
@@ -52,7 +52,7 @@ namespace ArenaGenerator
       }
 
 
-      private EarthFile<EarthLndData> CreateEmptyLndTemplate(string FileName = "GeneratedBattleArena", string LevelName = null) => new EarthFile<EarthLndData>
+      private EarthFile<EarthLndData> CreateEmptyLndTemplate(string fileName = "GeneratedBattleArena", string levelName = null) => new EarthFile<EarthLndData>
       {
          Type = FileType.Lnd,
          Header = new EarthHeader
@@ -60,11 +60,11 @@ namespace ArenaGenerator
             FileId = Guid.NewGuid(),
             Header = 0x39d0a1ff,
             UnknownOptionalField = 0x0400444c,
-            FileName = FileName
+            FileName = fileName
          },
          Data = new EarthLndData
          {
-            LevelName = LevelName ?? FileName,
+            LevelName = levelName ?? fileName,
             LevelWaterHeight = 0x800,
             MapHeight = MapMaxSize,
             MapWidth = MapMaxSize,

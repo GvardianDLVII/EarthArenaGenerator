@@ -2,6 +2,6 @@
 {
    public enum ArenaType
    {
-      StandardSquare
+      Open, Closed, SemiOpen, Dotted, Passages
    }
 }
