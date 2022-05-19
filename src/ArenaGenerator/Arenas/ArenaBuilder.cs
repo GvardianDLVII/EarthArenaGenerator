@@ -37,11 +37,11 @@ namespace ArenaGenerator.Arenas
 
       private void BuildArena(EarthFile<EarthMisData> misFile)
       {
-         for (int i = _arenaStartX - 1; i <= _arenaEndX + 1; i++)
+         for (int i = _arenaStartX - 5; i <= _arenaEndX + 5; i++)
          {
-            for (int j = _arenaStartY - 1; j <= _arenaEndY + 1; j++)
+            for (int j = _arenaStartY - 5; j <= _arenaEndY + 5; j++)
             {
-               if (i == _arenaStartX - 1 || i == _arenaEndX + 1 || j == _arenaStartY - 1 || j == _arenaEndY + 1)
+               if (i < _arenaStartX || i > _arenaEndX || j < _arenaStartY || j > _arenaEndY)
                {
                   misFile.Data.Objects.Add($"{i}, {j}, 0, 0, 0, 100, 0, 0, -1 NEBWALL0");
                }

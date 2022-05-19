@@ -10,7 +10,7 @@ namespace ArenaGenerator
    {
       private const int MapMaxSize = 256;
       private const int MapMargin = 17;
-      private const int ArenaPadding = 15;
+      internal const int ArenaPadding = 17;
 
       private const int MapStartX = MapMargin;
       private const int MapStartY = MapMargin;
